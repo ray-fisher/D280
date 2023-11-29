@@ -1,0 +1,26 @@
+.body {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.mapSection {
+    flex: 3;
+}
+
+.infoSection {
+    display: flex;
+    flex: 1;
+    align-items: center; 
+    padding-right: 15px; 
+}
+
+.infoHeader {
+    font-size: 30px;
+    padding: 15px;
+    background-color: lightgray;
+}
+
+.container {
+    background-color: #ccc;
+    width: 100%;
+}
