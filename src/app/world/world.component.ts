@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './world.component.scss'
 })
 export class WorldComponent {
+
   name: any;
   capital: any;
   region: any;
@@ -18,19 +19,20 @@ export class WorldComponent {
 
   ngOnInit(): void {
     let countryInfo = document.querySelectorAll<SVGPathElement>('path');
-
+    this.name = 'Hover Over a Country for More Information';
     Array.prototype.forEach.call(countryInfo, (country: SVGPathElement) => {
 
       country.addEventListener('mouseover', (event:MouseEvent)=> {
         const path = event.target as SVGPathElement;
-        path.style.fill = 'grey';
         this.getCountyInfo(country);
+        path.style.fill = 'grey';
       });
 
       country.addEventListener('mouseleave', (event:MouseEvent)=> {
         const path = event.target as SVGPathElement;
         path.style.fill = '';
       });
+
     });
   }
 
@@ -40,12 +42,14 @@ export class WorldComponent {
     let data: any =  await response.json();
     let dataPath: any = data[1];
     
-    this.name = dataPath[0].name;
-    this.capital = dataPath[0].capitalCity;
-    this.region = dataPath[0].region.value;
-    this.income = dataPath[0].incomeLevel.value;
-    this.longitude = dataPath[0].longitude;
-    this.latitude = dataPath[0].latitude;
+    if (dataPath != null){
+      this.name = dataPath[0].name;
+      this.capital = dataPath[0].capitalCity;
+      this.region = dataPath[0].region.value;
+      this.income = dataPath[0].incomeLevel.value;
+      this.longitude = dataPath[0].longitude;
+      this.latitude = dataPath[0].latitude;
+    } 
 
   }
 }

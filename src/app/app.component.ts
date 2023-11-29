@@ -11,5 +11,5 @@ import { WorldComponent } from "./world/world.component";
     imports: [CommonModule, RouterOutlet, WorldComponent]
 })
 export class AppComponent {
-  title = 'D280';
+  title = 'D280 - World Map';
 }
